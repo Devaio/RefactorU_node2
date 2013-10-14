@@ -26,13 +26,13 @@ app.use(app.router);
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
-}
+};
 
 app.get('/', function(req, res){
 	fs.readFile(__dirname + '/index.html', function(err, data){
-		res.setHeader('Content-Type', 'text/html')
-		res.send(data)
-	})
+		res.setHeader('Content-Type', 'text/html');
+		res.send(data);
+	});
 });
 
 http.createServer(app).listen(app.get('port'), function(){
@@ -41,13 +41,14 @@ http.createServer(app).listen(app.get('port'), function(){
 
 //dirty URL
 app.post('/formsubmit', function(req, res) {
-	res.redirect('/submit.html')
-})
+	res.redirect('/submit.html');
+	res.redirect('/submit');
+});
 
-//clean URL
-// app.get('/submit', function(req, res){
-// 	res.send('<h1>Thank\'s for the info!</h1>')
-// });
+// clean URL
+app.get('/submit', function(req, res){
+	res.send('<h1>Thank\'s for the info!</h1>');
+});
 
 
 
